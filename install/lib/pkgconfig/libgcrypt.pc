@@ -1,0 +1,18 @@
+prefix=/home/jasmine/encryption/libg-lite/install
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+host=x86_64-pc-linux-gnu
+api_version=1
+symmetric_ciphers="aes seed idea sm4"
+asymmetric_ciphers="dsa rsa ecc"
+digests="crc  md4 md5 sha1 sha256 sha512 sha3 sm3"
+
+Name: libgcrypt
+Description: General purpose cryptographic library
+Requires.private: gpg-error
+Version: 1.11.0
+Cflags: -I${includedir} 
+Libs: -L${libdir} -lgcrypt
+Libs.private: 
+URL: https://www.gnupg.org/software/libgcrypt/index.html

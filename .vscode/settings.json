@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "cycle-timings.h": "c",
+        "gcrypt.h": "c",
+        "random.h": "c",
+        "stdint.h": "c"
+    }
+}

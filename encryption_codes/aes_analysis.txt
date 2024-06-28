@@ -1,0 +1,491 @@
+--------------------------------------------------------------------------------
+Command:            ./AES
+Massif arguments:   (none)
+ms_print arguments: massif.out.1244391
+--------------------------------------------------------------------------------
+
+
+    MB
+15.27^                                                      @@@@@@@@@@@@@@@@@ 
+     |:::::::::::::::::#:::::::::::::::::: :::::::::::::::::@                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                  :                @                 
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+     |:                #:                 ::                @                :
+   0 +----------------------------------------------------------------------->Gi
+     0                                                                   3.577
+
+Number of snapshots: 67
+ Detailed snapshots: [7, 9, 10, 13 (peak), 26, 32, 43, 53, 63]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        197,396               56               37            19            0
+  2        198,976            1,144            1,087            57            0
+  3        334,923            1,200            1,120            80            0
+  4        345,718            1,240            1,137           103            0
+  5        354,535            1,728            1,609           119            0
+  6        355,179            2,760            2,633           127            0
+  7        564,085            2,760            2,633           127            0
+95.40% (2,633B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->38.99% (1,076B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->37.17% (1,026B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.20% (33B) 0x10A0E5: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->00.62% (17B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->37.10% (1,024B) 0x49C8D03: _IO_file_doallocate (filedoalloc.c:101)
+| ->37.10% (1,024B) 0x49D8ECF: _IO_doallocbuf (genops.c:347)
+|   ->37.10% (1,024B) 0x49D7CA3: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:486)
+|     ->37.10% (1,024B) 0x49D8F85: _IO_default_uflow (genops.c:362)
+|       ->37.10% (1,024B) 0x49CA86B: _IO_getline_info (iogetline.c:60)
+|         ->37.10% (1,024B) 0x49C96C9: fgets (iofgets.c:53)
+|           ->37.10% (1,024B) 0x1096F8: init (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|             ->37.10% (1,024B) 0x10A111: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|               
+->17.10% (472B) 0x49C992D: __fopen_internal (iofopen.c:65)
+| ->17.10% (472B) 0x49C992D: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+|   ->17.10% (472B) 0x10969C: init (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     ->17.10% (472B) 0x10A111: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|       
+->01.34% (37B) 0x497B73E: set_binding_values.part.0 (bindtextdom.c:203)
+| ->01.34% (37B) 0x497B9E4: set_binding_values (bindtextdom.c:82)
+|   ->01.34% (37B) 0x497B9E4: bindtextdomain (bindtextdom.c:320)
+|     ->01.34% (37B) 0x4B4036A: real_init (init.c:82)
+|       ->01.34% (37B) 0x4B4036A: _gpg_err_init (init.c:119)
+|         ->01.34% (37B) 0x4011B99: call_init.part.0 (dl-init.c:72)
+|           ->01.34% (37B) 0x4011CA0: call_init (dl-init.c:30)
+|             ->01.34% (37B) 0x4011CA0: _dl_init (dl-init.c:119)
+|               ->01.34% (37B) 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+|                 
+->00.87% (24B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  8        571,005            1,752            1,625           127            0
+  9        576,863            3,688            3,376           312            0
+91.54% (3,376B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->60.28% (2,223B) 0x48517F0: do_malloc (global.c:1011)
+| ->55.07% (2,031B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->55.07% (2,031B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->55.07% (2,031B) 0x485AA04: _gcry_cipher_open_internal (cipher.c:655)
+| |     ->55.07% (2,031B) 0x485AF47: _gcry_cipher_open (cipher.c:500)
+| |       ->55.07% (2,031B) 0x484E2C2: gcry_cipher_open (visibility.c:740)
+| |         ->55.07% (2,031B) 0x109AA6: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           ->55.07% (2,031B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |             ->55.07% (2,031B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |               ->55.07% (2,031B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |                 
+| ->05.21% (192B) 0x4852FA7: _gcry_malloc (global.c:1033)
+|   ->05.21% (192B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+|     ->03.90% (144B) 0x48E1835: _gcry_mpi_alloc (mpiutil.c:99)
+|     | ->03.90% (144B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|     |   ->03.90% (144B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+|     |     ->03.90% (144B) 0x485176E: global_init.part.0 (global.c:136)
+|     |       ->03.90% (144B) 0x4851A34: global_init (global.c:295)
+|     |         ->03.90% (144B) 0x4851A34: _gcry_check_version (global.c:266)
+|     |           ->03.90% (144B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |             ->03.90% (144B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |               ->03.90% (144B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                 ->03.90% (144B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                   
+|     ->01.30% (48B) 0x48E1814: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+|       ->01.30% (48B) 0x48E1868: _gcry_mpi_alloc (mpiutil.c:100)
+|         ->01.30% (48B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|           ->01.30% (48B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+|             ->01.30% (48B) 0x485176E: global_init.part.0 (global.c:136)
+|               ->01.30% (48B) 0x4851A34: global_init (global.c:295)
+|                 ->01.30% (48B) 0x4851A34: _gcry_check_version (global.c:266)
+|                   ->01.30% (48B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                     ->01.30% (48B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                       ->01.30% (48B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                         ->01.30% (48B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                           
+->29.18% (1,076B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->27.82% (1,026B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.36% (50B) in 2 places, all below massif's threshold (1.00%)
+|   
+->01.08% (40B) in 4 places, all below massif's threshold (1.00%)
+| 
+->01.00% (37B) 0x497B73E: set_binding_values.part.0 (bindtextdom.c:203)
+  ->01.00% (37B) 0x497B9E4: set_binding_values (bindtextdom.c:82)
+    ->01.00% (37B) 0x497B9E4: bindtextdomain (bindtextdom.c:320)
+      ->01.00% (37B) 0x4B4036A: real_init (init.c:82)
+        ->01.00% (37B) 0x4B4036A: _gpg_err_init (init.c:119)
+          ->01.00% (37B) 0x4011B99: call_init.part.0 (dl-init.c:72)
+            ->01.00% (37B) 0x4011CA0: call_init (dl-init.c:30)
+              ->01.00% (37B) 0x4011CA0: _dl_init (dl-init.c:119)
+                ->01.00% (37B) 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+                  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 10        584,690            3,688            3,376           312            0
+91.54% (3,376B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->60.28% (2,223B) 0x48517F0: do_malloc (global.c:1011)
+| ->55.07% (2,031B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->55.07% (2,031B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->55.07% (2,031B) 0x485AA04: _gcry_cipher_open_internal (cipher.c:655)
+| |     ->55.07% (2,031B) 0x485AF47: _gcry_cipher_open (cipher.c:500)
+| |       ->55.07% (2,031B) 0x484E2C2: gcry_cipher_open (visibility.c:740)
+| |         ->55.07% (2,031B) 0x109AA6: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           ->55.07% (2,031B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |             ->55.07% (2,031B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |               ->55.07% (2,031B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |                 
+| ->05.21% (192B) 0x4852FA7: _gcry_malloc (global.c:1033)
+|   ->05.21% (192B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+|     ->03.90% (144B) 0x48E1835: _gcry_mpi_alloc (mpiutil.c:99)
+|     | ->03.90% (144B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|     |   ->03.90% (144B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+|     |     ->03.90% (144B) 0x485176E: global_init.part.0 (global.c:136)
+|     |       ->03.90% (144B) 0x4851A34: global_init (global.c:295)
+|     |         ->03.90% (144B) 0x4851A34: _gcry_check_version (global.c:266)
+|     |           ->03.90% (144B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |             ->03.90% (144B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |               ->03.90% (144B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                 ->03.90% (144B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                   
+|     ->01.30% (48B) 0x48E1814: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+|       ->01.30% (48B) 0x48E1868: _gcry_mpi_alloc (mpiutil.c:100)
+|         ->01.30% (48B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|           ->01.30% (48B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+|             ->01.30% (48B) 0x485176E: global_init.part.0 (global.c:136)
+|               ->01.30% (48B) 0x4851A34: global_init (global.c:295)
+|                 ->01.30% (48B) 0x4851A34: _gcry_check_version (global.c:266)
+|                   ->01.30% (48B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                     ->01.30% (48B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                       ->01.30% (48B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                         ->01.30% (48B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|                           
+->29.18% (1,076B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->27.82% (1,026B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.36% (50B) in 2 places, all below massif's threshold (1.00%)
+|   
+->01.08% (40B) in 4 places, all below massif's threshold (1.00%)
+| 
+->01.00% (37B) 0x497B73E: set_binding_values.part.0 (bindtextdom.c:203)
+  ->01.00% (37B) 0x497B9E4: set_binding_values (bindtextdom.c:82)
+    ->01.00% (37B) 0x497B9E4: bindtextdomain (bindtextdom.c:320)
+      ->01.00% (37B) 0x4B4036A: real_init (init.c:82)
+        ->01.00% (37B) 0x4B4036A: _gpg_err_init (init.c:119)
+          ->01.00% (37B) 0x4011B99: call_init.part.0 (dl-init.c:72)
+            ->01.00% (37B) 0x4011CA0: call_init (dl-init.c:30)
+              ->01.00% (37B) 0x4011CA0: _dl_init (dl-init.c:119)
+                ->01.00% (37B) 0x4001139: ??? (in /usr/lib/x86_64-linux-gnu/ld-2.31.so)
+                  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 11        584,819        8,005,176        8,001,345         3,831            0
+ 12     52,585,087       16,008,704       16,001,345         7,359            0
+ 13    959,974,216       16,008,704       16,001,345         7,359            0
+99.95% (16,001,345B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->49.97% (8,000,000B) 0x1095AE: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->49.97% (8,000,000B) 0x109E9A: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   ->49.97% (8,000,000B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     
+->49.97% (8,000,000B) 0x498CB6C: qsort_r (msort.c:222)
+| ->49.97% (8,000,000B) 0x109618: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   ->49.97% (8,000,000B) 0x109E9A: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     ->49.97% (8,000,000B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|       
+->00.01% (1,345B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 14    959,981,061            4,760            4,424           336            0
+ 15    959,985,083            4,760            4,424           336            0
+ 16    959,992,835            2,680            2,369           311            0
+ 17    960,008,200            3,728            3,395           333            0
+ 18    960,144,136            3,784            3,428           356            0
+ 19    960,154,931            3,824            3,445           379            0
+ 20    960,163,748            4,312            3,917           395            0
+ 21    960,164,392            5,344            4,941           403            0
+ 22    960,373,600            4,312            3,917           395            0
+ 23    960,377,052        8,007,352        8,003,445         3,907            0
+ 24  1,012,377,136       16,010,880       16,003,445         7,435            0
+ 25  1,922,164,958        8,007,352        8,003,445         3,907            0
+ 26  1,922,169,913            5,904            5,500           404            0
+93.16% (5,500B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->37.65% (2,223B) 0x48517F0: do_malloc (global.c:1011)
+| ->34.40% (2,031B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->34.40% (2,031B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->34.40% (2,031B) 0x485AA04: _gcry_cipher_open_internal (cipher.c:655)
+| |     ->34.40% (2,031B) 0x485AF47: _gcry_cipher_open (cipher.c:500)
+| |       ->34.40% (2,031B) 0x484E2C2: gcry_cipher_open (visibility.c:740)
+| |         ->34.40% (2,031B) 0x109AA6: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           ->34.40% (2,031B) 0x109C96: aes_256_ctr (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | ->34.40% (2,031B) 0x109EFC: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | | ->34.40% (2,031B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | |   
+| |           | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |           | 
+| |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |           
+| ->03.25% (192B) 0x4852FA7: _gcry_malloc (global.c:1033)
+|   ->03.25% (192B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+|     ->02.44% (144B) 0x48E1835: _gcry_mpi_alloc (mpiutil.c:99)
+|     | ->02.44% (144B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|     |   ->02.44% (144B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+|     |     ->02.44% (144B) 0x485176E: global_init.part.0 (global.c:136)
+|     |       ->02.44% (144B) 0x4851A34: global_init (global.c:295)
+|     |         ->02.44% (144B) 0x4851A34: _gcry_check_version (global.c:266)
+|     |           ->02.44% (144B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |             ->02.44% (144B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |               ->02.44% (144B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                 ->02.44% (144B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                   
+|     ->00.81% (48B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->36.45% (2,152B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->34.76% (2,052B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.12% (66B) 0x10A0E5: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->00.58% (34B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->17.34% (1,024B) 0x49C8D03: _IO_file_doallocate (filedoalloc.c:101)
+| ->17.34% (1,024B) 0x49D8ECF: _IO_doallocbuf (genops.c:347)
+|   ->17.34% (1,024B) 0x49D7F2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|   | ->17.34% (1,024B) 0x49D66B4: _IO_new_file_xsputn (fileops.c:1244)
+|   |   ->17.34% (1,024B) 0x49D66B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|   |     ->17.34% (1,024B) 0x49BD971: __vfprintf_internal (vfprintf-internal.c:1373)
+|   |       ->17.34% (1,024B) 0x49A8D3E: printf (printf.c:33)
+|   |         ->17.34% (1,024B) 0x109EB6: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |           ->17.34% (1,024B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |             
+|   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   
+->01.71% (101B) in 7 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 27  1,922,173,114            5,904            5,500           404            0
+ 28  1,922,179,225            3,824            3,445           379            0
+ 29  1,922,194,043            4,872            4,471           401            0
+ 30  1,922,329,986            4,928            4,504           424            0
+ 31  1,922,340,781            4,968            4,521           447            0
+ 32  1,922,349,598            5,456            4,993           463            0
+91.51% (4,993B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->59.16% (3,228B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->56.41% (3,078B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.81% (99B) 0x10A0E5: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->00.93% (51B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->18.77% (1,024B) 0x49C8D03: _IO_file_doallocate (filedoalloc.c:101)
+| ->18.77% (1,024B) 0x49D8ECF: _IO_doallocbuf (genops.c:347)
+|   ->18.77% (1,024B) 0x49D7F2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|   | ->18.77% (1,024B) 0x49D66B4: _IO_new_file_xsputn (fileops.c:1244)
+|   |   ->18.77% (1,024B) 0x49D66B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|   |     ->18.77% (1,024B) 0x49BD971: __vfprintf_internal (vfprintf-internal.c:1373)
+|   |       ->18.77% (1,024B) 0x49A8D3E: printf (printf.c:33)
+|   |         ->18.77% (1,024B) 0x109EB6: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |           ->18.77% (1,024B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |             
+|   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   
+->08.65% (472B) 0x49C992D: __fopen_internal (iofopen.c:65)
+| ->08.65% (472B) 0x49C992D: fopen@@GLIBC_2.2.5 (iofopen.c:86)
+|   ->08.65% (472B) 0x10969C: init (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   | ->08.65% (472B) 0x10A111: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |   
+|   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   
+->03.52% (192B) 0x48517F0: do_malloc (global.c:1011)
+| ->03.52% (192B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->03.52% (192B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->02.64% (144B) 0x48E1835: _gcry_mpi_alloc (mpiutil.c:99)
+| |   | ->02.64% (144B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+| |   |   ->02.64% (144B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+| |   |     ->02.64% (144B) 0x485176E: global_init.part.0 (global.c:136)
+| |   |       ->02.64% (144B) 0x4851A34: global_init (global.c:295)
+| |   |         ->02.64% (144B) 0x4851A34: _gcry_check_version (global.c:266)
+| |   |           ->02.64% (144B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |             ->02.64% (144B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |               ->02.64% (144B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |                 ->02.64% (144B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |                   
+| |   ->00.88% (48B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.41% (77B) in 6 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 33  1,922,350,242            6,488            6,017           471            0
+ 34  1,922,559,450            5,456            4,993           463            0
+ 35  1,922,566,187        8,008,496        8,004,521         3,975            0
+ 36  1,974,566,271       16,012,024       16,004,521         7,503            0
+ 37  2,881,674,254        8,008,496        8,004,521         3,975            0
+ 38  2,881,676,008            7,048            6,576           472            0
+ 39  2,881,682,494            7,048            6,576           472            0
+ 40  2,881,688,980            7,048            6,576           472            0
+ 41  2,881,695,974            7,008            6,552           456            0
+ 42  2,881,701,661            4,968            4,521           447            0
+ 43  2,881,716,525            6,016            5,547           469            0
+92.20% (5,547B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.71% (4,254B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->68.22% (4,104B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.65% (99B) 0x10A0E5: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->00.85% (51B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->17.02% (1,024B) 0x49C8D03: _IO_file_doallocate (filedoalloc.c:101)
+| ->17.02% (1,024B) 0x49D8ECF: _IO_doallocbuf (genops.c:347)
+|   ->17.02% (1,024B) 0x49D7F2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|   | ->17.02% (1,024B) 0x49D66B4: _IO_new_file_xsputn (fileops.c:1244)
+|   |   ->17.02% (1,024B) 0x49D66B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|   |     ->17.02% (1,024B) 0x49BD971: __vfprintf_internal (vfprintf-internal.c:1373)
+|   |       ->17.02% (1,024B) 0x49A8D3E: printf (printf.c:33)
+|   |         ->17.02% (1,024B) 0x109EB6: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |           ->17.02% (1,024B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |             
+|   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   
+->03.19% (192B) 0x48517F0: do_malloc (global.c:1011)
+| ->03.19% (192B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->03.19% (192B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->02.39% (144B) 0x48E1835: _gcry_mpi_alloc (mpiutil.c:99)
+| |   | ->02.39% (144B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+| |   |   ->02.39% (144B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+| |   |     ->02.39% (144B) 0x485176E: global_init.part.0 (global.c:136)
+| |   |       ->02.39% (144B) 0x4851A34: global_init (global.c:295)
+| |   |         ->02.39% (144B) 0x4851A34: _gcry_check_version (global.c:266)
+| |   |           ->02.39% (144B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |             ->02.39% (144B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |               ->02.39% (144B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |                 ->02.39% (144B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |   |                   
+| |   ->00.80% (48B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.28% (77B) in 7 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 44  2,881,852,461            6,072            5,580           492            0
+ 45  2,881,863,256            6,112            5,597           515            0
+ 46  2,881,872,073            6,600            6,069           531            0
+ 47  2,881,872,717            7,632            7,093           539            0
+ 48  2,882,081,925            6,600            6,069           531            0
+ 49  2,882,082,058            6,112            5,597           515            0
+ 50  2,882,082,847            8,152            7,628           524            0
+ 51  2,882,085,952            6,112            5,597           515            0
+ 52  2,882,086,081        8,009,640        8,005,597         4,043            0
+ 53  2,934,086,165       16,013,168       16,005,597         7,571            0
+99.95% (16,005,597B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->49.96% (8,000,000B) 0x1095AE: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->49.96% (8,000,000B) 0x109E9A: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   ->49.96% (8,000,000B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     
+->49.96% (8,000,000B) 0x498CB6C: qsort_r (msort.c:222)
+| ->49.96% (8,000,000B) 0x109618: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   ->49.96% (8,000,000B) 0x109E9A: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     ->49.96% (8,000,000B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|       
+->00.03% (5,597B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 54  3,841,251,672        8,009,640        8,005,597         4,043            0
+ 55  3,841,252,669            6,152            5,621           531            0
+ 56  3,841,253,427            8,192            7,652           540            0
+ 57  3,841,256,532            6,152            5,621           531            0
+ 58  3,841,257,332            8,192            7,652           540            0
+ 59  3,841,260,437            6,152            5,621           531            0
+ 60  3,841,261,237            8,192            7,652           540            0
+ 61  3,841,264,342            6,152            5,621           531            0
+ 62  3,841,264,842            6,112            5,597           515            0
+ 63  3,841,265,650            8,152            7,628           524            0
+93.57% (7,628B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->52.80% (4,304B) 0x10991B: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| ->50.34% (4,104B) 0x10A0C1: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->01.62% (132B) 0x10A0E5: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| | 
+| ->00.83% (68B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->27.27% (2,223B) 0x48517F0: do_malloc (global.c:1011)
+| ->24.91% (2,031B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->24.91% (2,031B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->24.91% (2,031B) 0x485AA04: _gcry_cipher_open_internal (cipher.c:655)
+| |     ->24.91% (2,031B) 0x485AF47: _gcry_cipher_open (cipher.c:500)
+| |       ->24.91% (2,031B) 0x484E2C2: gcry_cipher_open (visibility.c:740)
+| |         ->24.91% (2,031B) 0x109AA6: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           ->24.91% (2,031B) 0x109D42: aes_256_cfb (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | ->24.91% (2,031B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | | ->24.91% (2,031B) 0x109FF8: throughput (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | | | ->24.91% (2,031B) 0x10A1E5: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+| |           | | |   
+| |           | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |           | | 
+| |           | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |           | 
+| |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |           
+| ->02.36% (192B) 0x4852FA7: _gcry_malloc (global.c:1033)
+|   ->02.36% (192B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+|     ->01.77% (144B) 0x48E1835: _gcry_mpi_alloc (mpiutil.c:99)
+|     | ->01.77% (144B) 0x48E18A5: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|     |   ->01.77% (144B) 0x48E18A5: _gcry_mpi_init (mpiutil.c:78)
+|     |     ->01.77% (144B) 0x485176E: global_init.part.0 (global.c:136)
+|     |       ->01.77% (144B) 0x4851A34: global_init (global.c:295)
+|     |         ->01.77% (144B) 0x4851A34: _gcry_check_version (global.c:266)
+|     |           ->01.77% (144B) 0x109A33: aes_generic (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |             ->01.77% (144B) 0x109CEC: aes_256_cbc (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |               ->01.77% (144B) 0x109DF1: cpu_time (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                 ->01.77% (144B) 0x10A149: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|     |                   
+|     ->00.59% (48B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->12.56% (1,024B) 0x49C8D03: _IO_file_doallocate (filedoalloc.c:101)
+| ->12.56% (1,024B) 0x49D8ECF: _IO_doallocbuf (genops.c:347)
+|   ->12.56% (1,024B) 0x49D7F2F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+|   | ->12.56% (1,024B) 0x49D66B4: _IO_new_file_xsputn (fileops.c:1244)
+|   |   ->12.56% (1,024B) 0x49D66B4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+|   |     ->12.56% (1,024B) 0x49BD971: __vfprintf_internal (vfprintf-internal.c:1373)
+|   |       ->12.56% (1,024B) 0x49A8D3E: printf (printf.c:33)
+|   |         ->12.56% (1,024B) 0x109EB6: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |           ->12.56% (1,024B) 0x10A19F: main (in /home/jasmine/encryption/libg-lite/encryption codes/AES)
+|   |             
+|   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   
+->00.94% (77B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 64  3,841,268,755            6,112            5,597           515            0
+ 65  3,841,287,453            6,072            5,573           499            0
+ 66  3,841,287,672            4,984            4,512           472            0
