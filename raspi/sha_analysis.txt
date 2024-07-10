@@ -1,0 +1,332 @@
+--------------------------------------------------------------------------------
+Command:            ./SHA
+Massif arguments:   (none)
+ms_print arguments: massif.out.1969
+--------------------------------------------------------------------------------
+
+
+    MB
+15.28^   ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |   :                                                                   #
+     |::::                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+     |:  :                                                                   #
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   704.6
+
+Number of snapshots: 46
+ Detailed snapshots: [6, 16, 17, 27, 35 (peak), 45]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1        143,962               56               37            19            0
+  2        144,091               96               61            35            0
+  3        147,896            1,144            1,086            58            0
+  4        288,920            1,632            1,558            74            0
+  5        290,328            2,664            2,582            82            0
+  6        302,612            2,664            2,582            82            0
+96.92% (2,582B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->38.48% (1,025B) 0x121513: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->38.48% (1,025B) 0x121617: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   
+->38.44% (1,024B) 0x49EA273: _IO_file_doallocate (filedoalloc.c:101)
+| ->38.44% (1,024B) 0x49F893F: _IO_doallocbuf (genops.c:347)
+|   ->38.44% (1,024B) 0x49F893F: _IO_doallocbuf (genops.c:342)
+|     ->38.44% (1,024B) 0x49F7A93: _IO_file_underflow@@GLIBC_2.17 (fileops.c:485)
+|       ->38.44% (1,024B) 0x49F89FF: _IO_default_uflow (genops.c:362)
+|         ->38.44% (1,024B) 0x49EBCDF: _IO_getline_info (iogetline.c:60)
+|           ->38.44% (1,024B) 0x49EAB33: fgets (iofgets.c:53)
+|             ->38.44% (1,024B) 0x12101B: init (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|               ->38.44% (1,024B) 0x12162B: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                 
+->17.72% (472B) 0x49EACB7: __fopen_internal (iofopen.c:65)
+| ->17.72% (472B) 0x120FBB: init (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   ->17.72% (472B) 0x12162B: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     
+->01.39% (37B) 0x49B485F: set_binding_values.part.0 (bindtextdom.c:203)
+| ->01.39% (37B) 0x49B4AF3: set_binding_values (bindtextdom.c:322)
+|   ->01.39% (37B) 0x49B4AF3: bindtextdomain (bindtextdom.c:320)
+|     ->01.39% (37B) 0x4B35D7B: real_init (init.c:82)
+|       ->01.39% (37B) 0x4B35D7B: _gpg_err_init (init.c:119)
+|         ->01.39% (37B) 0x40044C7: call_init (dl-init.c:74)
+|           ->01.39% (37B) 0x40044C7: call_init (dl-init.c:26)
+|             ->01.39% (37B) 0x40045D3: _dl_init (dl-init.c:121)
+|               ->01.39% (37B) 0x401AC37: (below main) (dl-start.S:46)
+|                 
+->00.90% (24B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  7        302,612            1,632            1,558            74            0
+  8        302,758            1,144            1,086            58            0
+  9        302,814            1,184            1,110            74            0
+ 10        307,101            1,208            1,126            82            0
+ 11        309,442            1,696            1,598            98            0
+ 12        310,016            1,208            1,126            82            0
+ 13        310,905            1,696            1,598            98            0
+ 14        311,479            1,208            1,126            82            0
+ 15        312,509            1,696            1,598            98            0
+ 16        314,647            2,728            2,622           106            0
+96.11% (2,622B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->37.57% (1,025B) 0x121513: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->37.57% (1,025B) 0x121617: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   
+->37.54% (1,024B) 0x49EA273: _IO_file_doallocate (filedoalloc.c:101)
+| ->37.54% (1,024B) 0x49F893F: _IO_doallocbuf (genops.c:347)
+|   ->37.54% (1,024B) 0x49F893F: _IO_doallocbuf (genops.c:342)
+|     ->37.54% (1,024B) 0x49F6BFB: _IO_file_xsgetn (fileops.c:1287)
+|     | ->37.54% (1,024B) 0x49EB267: fread (iofread.c:38)
+|     |   ->37.54% (1,024B) 0x48C8A2F: detect_arm_proc_cpuinfo.constprop.0 (hwf-arm.c:343)
+|     |     ->37.54% (1,024B) 0x48C8CAB: _gcry_hwf_detect_arm (hwf-arm.c:552)
+|     |       ->37.54% (1,024B) 0x48C63FB: _gcry_detect_hw_features (hwfeatures.c:238)
+|     |         ->37.54% (1,024B) 0x48C0C0F: global_init.part.0 (global.c:114)
+|     |           ->37.54% (1,024B) 0x48C0EA7: global_init (global.c:295)
+|     |             ->37.54% (1,024B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|     |               ->37.54% (1,024B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                 ->37.54% (1,024B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                   ->37.54% (1,024B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                     
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->17.30% (472B) 0x49EACB7: __fopen_internal (iofopen.c:65)
+| ->17.30% (472B) 0x48C89FF: detect_arm_proc_cpuinfo.constprop.0 (hwf-arm.c:338)
+| | ->17.30% (472B) 0x48C8CAB: _gcry_hwf_detect_arm (hwf-arm.c:552)
+| |   ->17.30% (472B) 0x48C63FB: _gcry_detect_hw_features (hwfeatures.c:238)
+| |     ->17.30% (472B) 0x48C0C0F: global_init.part.0 (global.c:114)
+| |       ->17.30% (472B) 0x48C0EA7: global_init (global.c:295)
+| |         ->17.30% (472B) 0x48C0EA7: _gcry_check_version (global.c:266)
+| |           ->17.30% (472B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| |             ->17.30% (472B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| |               ->17.30% (472B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| |                 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.35% (64B) in 3 places, all below massif's threshold (1.00%)
+| 
+->01.36% (37B) 0x49B485F: set_binding_values.part.0 (bindtextdom.c:203)
+  ->01.36% (37B) 0x49B4AF3: set_binding_values (bindtextdom.c:322)
+    ->01.36% (37B) 0x49B4AF3: bindtextdomain (bindtextdom.c:320)
+      ->01.36% (37B) 0x4B35D7B: real_init (init.c:82)
+        ->01.36% (37B) 0x4B35D7B: _gpg_err_init (init.c:119)
+          ->01.36% (37B) 0x40044C7: call_init (dl-init.c:74)
+            ->01.36% (37B) 0x40044C7: call_init (dl-init.c:26)
+              ->01.36% (37B) 0x40045D3: _dl_init (dl-init.c:121)
+                ->01.36% (37B) 0x401AC37: (below main) (dl-start.S:46)
+                  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 17        315,807            2,728            2,622           106            0
+96.11% (2,622B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->37.57% (1,025B) 0x121513: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->37.57% (1,025B) 0x121617: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   
+->37.54% (1,024B) 0x49EA273: _IO_file_doallocate (filedoalloc.c:101)
+| ->37.54% (1,024B) 0x49F893F: _IO_doallocbuf (genops.c:347)
+|   ->37.54% (1,024B) 0x49F893F: _IO_doallocbuf (genops.c:342)
+|     ->37.54% (1,024B) 0x49F6BFB: _IO_file_xsgetn (fileops.c:1287)
+|     | ->37.54% (1,024B) 0x49EB267: fread (iofread.c:38)
+|     |   ->37.54% (1,024B) 0x48C8A2F: detect_arm_proc_cpuinfo.constprop.0 (hwf-arm.c:343)
+|     |     ->37.54% (1,024B) 0x48C8CAB: _gcry_hwf_detect_arm (hwf-arm.c:552)
+|     |       ->37.54% (1,024B) 0x48C63FB: _gcry_detect_hw_features (hwfeatures.c:238)
+|     |         ->37.54% (1,024B) 0x48C0C0F: global_init.part.0 (global.c:114)
+|     |           ->37.54% (1,024B) 0x48C0EA7: global_init (global.c:295)
+|     |             ->37.54% (1,024B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|     |               ->37.54% (1,024B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                 ->37.54% (1,024B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                   ->37.54% (1,024B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                     
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->17.30% (472B) 0x49EACB7: __fopen_internal (iofopen.c:65)
+| ->17.30% (472B) 0x48C89FF: detect_arm_proc_cpuinfo.constprop.0 (hwf-arm.c:338)
+| | ->17.30% (472B) 0x48C8CAB: _gcry_hwf_detect_arm (hwf-arm.c:552)
+| |   ->17.30% (472B) 0x48C63FB: _gcry_detect_hw_features (hwfeatures.c:238)
+| |     ->17.30% (472B) 0x48C0C0F: global_init.part.0 (global.c:114)
+| |       ->17.30% (472B) 0x48C0EA7: global_init (global.c:295)
+| |         ->17.30% (472B) 0x48C0EA7: _gcry_check_version (global.c:266)
+| |           ->17.30% (472B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| |             ->17.30% (472B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| |               ->17.30% (472B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| |                 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.35% (64B) in 3 places, all below massif's threshold (1.00%)
+| 
+->01.36% (37B) 0x49B485F: set_binding_values.part.0 (bindtextdom.c:203)
+  ->01.36% (37B) 0x49B4AF3: set_binding_values (bindtextdom.c:322)
+    ->01.36% (37B) 0x49B4AF3: bindtextdomain (bindtextdom.c:320)
+      ->01.36% (37B) 0x4B35D7B: real_init (init.c:82)
+        ->01.36% (37B) 0x4B35D7B: _gpg_err_init (init.c:119)
+          ->01.36% (37B) 0x40044C7: call_init (dl-init.c:74)
+            ->01.36% (37B) 0x40044C7: call_init (dl-init.c:26)
+              ->01.36% (37B) 0x40045D3: _dl_init (dl-init.c:121)
+                ->01.36% (37B) 0x401AC37: (below main) (dl-start.S:46)
+                  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 18        315,807            1,696            1,598            98            0
+ 19        315,953            1,208            1,126            82            0
+ 20        337,202            1,248            1,150            98            0
+ 21        337,291            1,272            1,158           114            0
+ 22        337,390            1,312            1,182           130            0
+ 23        337,479            1,336            1,190           146            0
+ 24        337,578            1,376            1,214           162            0
+ 25        337,667            1,400            1,222           178            0
+ 26        337,766            1,440            1,246           194            0
+ 27        337,855            1,464            1,254           210            0
+85.66% (1,254B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.01% (1,025B) 0x121513: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->70.01% (1,025B) 0x121617: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   
+->08.74% (128B) 0x48C0CFF: do_malloc.constprop.0.isra.0 (global.c:1011)
+| ->08.74% (128B) 0x48C2233: _gcry_malloc (global.c:1033)
+|   ->08.74% (128B) 0x48C2233: _gcry_xmalloc (global.c:1193)
+|     ->06.56% (96B) 0x4923ACF: _gcry_mpi_alloc (mpiutil.c:99)
+|     | ->06.56% (96B) 0x4923ACF: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|     |   ->06.56% (96B) 0x4923ACF: _gcry_mpi_init (mpiutil.c:78)
+|     |     ->06.56% (96B) 0x48C0C43: global_init.part.0 (global.c:136)
+|     |       ->06.56% (96B) 0x48C0EA7: global_init (global.c:295)
+|     |         ->06.56% (96B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|     |           ->06.56% (96B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |             ->06.56% (96B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |               ->06.56% (96B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                 
+|     ->02.19% (32B) 0x4923ADB: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+|       ->02.19% (32B) 0x4923ADB: _gcry_mpi_alloc (mpiutil.c:100)
+|         ->02.19% (32B) 0x4923ADB: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|           ->02.19% (32B) 0x4923ADB: _gcry_mpi_init (mpiutil.c:78)
+|             ->02.19% (32B) 0x48C0C43: global_init.part.0 (global.c:136)
+|               ->02.19% (32B) 0x48C0EA7: global_init (global.c:295)
+|                 ->02.19% (32B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|                   ->02.19% (32B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                     ->02.19% (32B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                       ->02.19% (32B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                         
+->02.53% (37B) 0x49B485F: set_binding_values.part.0 (bindtextdom.c:203)
+| ->02.53% (37B) 0x49B4AF3: set_binding_values (bindtextdom.c:322)
+|   ->02.53% (37B) 0x49B4AF3: bindtextdomain (bindtextdom.c:320)
+|     ->02.53% (37B) 0x4B35D7B: real_init (init.c:82)
+|       ->02.53% (37B) 0x4B35D7B: _gpg_err_init (init.c:119)
+|         ->02.53% (37B) 0x40044C7: call_init (dl-init.c:74)
+|           ->02.53% (37B) 0x40044C7: call_init (dl-init.c:26)
+|             ->02.53% (37B) 0x40045D3: _dl_init (dl-init.c:121)
+|               ->02.53% (37B) 0x401AC37: (below main) (dl-start.S:46)
+|                 
+->01.64% (24B) 0x121257: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->01.64% (24B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   
+->01.64% (24B) 0x4A1580F: strdup (strdup.c:42)
+| ->01.64% (24B) 0x49B4A7B: set_binding_values.part.0 (bindtextdom.c:225)
+|   ->01.64% (24B) 0x49B4AF3: set_binding_values (bindtextdom.c:322)
+|     ->01.64% (24B) 0x49B4AF3: bindtextdomain (bindtextdom.c:320)
+|       ->01.64% (24B) 0x4B35D7B: real_init (init.c:82)
+|         ->01.64% (24B) 0x4B35D7B: _gpg_err_init (init.c:119)
+|           ->01.64% (24B) 0x40044C7: call_init (dl-init.c:74)
+|             ->01.64% (24B) 0x40044C7: call_init (dl-init.c:26)
+|               ->01.64% (24B) 0x40045D3: _dl_init (dl-init.c:121)
+|                 ->01.64% (24B) 0x401AC37: (below main) (dl-start.S:46)
+|                   
+->01.09% (16B) 0x4B4278B: _gpgrt_add_post_log_func (logging.c:684)
+| ->01.09% (16B) 0x48C0C03: global_init.part.0 (global.c:106)
+|   ->01.09% (16B) 0x48C0EA7: global_init (global.c:295)
+|     ->01.09% (16B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|       ->01.09% (16B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|         ->01.09% (16B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|           ->01.09% (16B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|             
+->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28        337,954            1,504            1,278           226            0
+ 29        338,043            1,528            1,286           242            0
+ 30        338,142            1,568            1,310           258            0
+ 31        338,231            1,592            1,318           274            0
+ 32        414,157            1,552            1,294           258            0
+ 33        414,216        8,013,272        8,001,294        11,978            0
+ 34     33,414,534       16,024,992       16,001,294        23,698            0
+ 35    738,709,269       16,024,992       16,001,294        23,698            0
+99.85% (16,001,294B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->49.92% (8,000,000B) 0x120EC7: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->49.92% (8,000,000B) 0x121383: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   ->49.92% (8,000,000B) 0x121667: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     
+->49.92% (8,000,000B) 0x49BE68F: qsort_r (msort.c:221)
+| ->49.92% (8,000,000B) 0x120F43: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   ->49.92% (8,000,000B) 0x121383: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     ->49.92% (8,000,000B) 0x121667: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|       
+->00.01% (1,294B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 36    738,709,269        8,013,272        8,001,294        11,978            0
+ 37    738,709,323            1,552            1,294           258            0
+ 38    738,710,359            2,584            2,318           266            0
+ 39    738,711,902            2,624            2,342           282            0
+ 40    738,783,065            2,584            2,318           266            0
+ 41    738,783,127            2,624            2,342           282            0
+ 42    738,854,406            2,584            2,318           266            0
+ 43    738,877,313            2,544            2,294           250            0
+ 44    738,877,366            2,488            2,257           231            0
+ 45    738,877,583            1,456            1,233           223            0
+84.68% (1,233B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->70.40% (1,025B) 0x121513: random_string_generator (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+| ->70.40% (1,025B) 0x121617: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|   
+->13.19% (192B) 0x48C0CFF: do_malloc.constprop.0.isra.0 (global.c:1011)
+| ->13.19% (192B) 0x48C2233: _gcry_malloc (global.c:1033)
+|   ->13.19% (192B) 0x48C2233: _gcry_xmalloc (global.c:1193)
+|     ->09.89% (144B) 0x4923ACF: _gcry_mpi_alloc (mpiutil.c:99)
+|     | ->09.89% (144B) 0x4923ACF: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|     |   ->09.89% (144B) 0x4923ACF: _gcry_mpi_init (mpiutil.c:78)
+|     |     ->09.89% (144B) 0x48C0C43: global_init.part.0 (global.c:136)
+|     |       ->09.89% (144B) 0x48C0EA7: global_init (global.c:295)
+|     |         ->09.89% (144B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|     |           ->09.89% (144B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |             ->09.89% (144B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |               ->09.89% (144B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|     |                 
+|     ->03.30% (48B) 0x4923ADB: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+|       ->03.30% (48B) 0x4923ADB: _gcry_mpi_alloc (mpiutil.c:100)
+|         ->03.30% (48B) 0x4923ADB: _gcry_mpi_alloc_set_ui (mpiutil.c:589)
+|           ->03.30% (48B) 0x4923ADB: _gcry_mpi_init (mpiutil.c:78)
+|             ->03.30% (48B) 0x48C0C43: global_init.part.0 (global.c:136)
+|               ->03.30% (48B) 0x48C0EA7: global_init (global.c:295)
+|                 ->03.30% (48B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|                   ->03.30% (48B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                     ->03.30% (48B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                       ->03.30% (48B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|                         
+->01.10% (16B) 0x4B4278B: _gpgrt_add_post_log_func (logging.c:684)
+| ->01.10% (16B) 0x48C0C03: global_init.part.0 (global.c:106)
+|   ->01.10% (16B) 0x48C0EA7: global_init (global.c:295)
+|     ->01.10% (16B) 0x48C0EA7: _gcry_check_version (global.c:266)
+|       ->01.10% (16B) 0x121193: msg_hashing (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|         ->01.10% (16B) 0x12127F: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|           ->01.10% (16B) 0x12163F: main (in /home/jasmine/encryption/libg-lite/encryption_codes/SHA)
+|             
+->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+
