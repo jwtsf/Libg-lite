@@ -1,5 +1,5 @@
 #define _POSIX_C_SOURCE 200809L
-#include "../install/include/gcrypt.h"
+#include "../../install/include/gcrypt.h"
 #include "cycle-timings.h"
 #include <stdio.h>
 #include <string.h>
@@ -11,8 +11,60 @@
 #include <time.h>
 #include <sys/sysinfo.h>
 #include "cpu-usage.h"
-#define USE_AESNI
+//#define USE_AESNI
 
+//read file into buffer
+unsigned char* file_to_buffer(const char* filename,size_t* padded_size)
+{
+    FILE *fp = fopen(filename, "rb");
+    if (fp != NULL)
+    {
+        if (fseek(fp, 0L, SEEK_END)!=0)
+        {
+            return NULL;
+        }
+
+        long int size = ftell(fp);
+        
+
+        if (fseek(fp, 0L, SEEK_SET) !=0)
+        {
+            return NULL;
+        }
+        *padded_size = (size + 16) & ~15;
+        unsigned char* buffer = malloc(*padded_size);
+
+        if (!buffer) 
+        {
+            perror("Memory allocation failed");
+            fclose(fp);
+            return NULL;
+        }
+
+        size_t newLen = fread(buffer, sizeof(unsigned char), size, fp);
+        if ( ferror( fp ) != 0 ) {
+            fputs("Error reading file", stderr);
+            free(buffer);
+            fclose(fp);
+            return NULL;
+        } 
+            // Pad the buffer with zeroes if necessary
+        if (newLen < *padded_size)
+        {
+            for (size_t i = newLen; i < *padded_size; ++i)
+            {
+                buffer[i] = 0;
+            }
+            
+        }
+        buffer[*padded_size-1] = '\0';
+
+
+        fclose(fp);
+
+        return buffer;
+    }
+}
 
 
 
@@ -47,64 +99,6 @@ unsigned char*  random_string_generator(int strlen)
     return str;
 }
 
-/*
-int aes(unsigned char *plaintext, unsigned char *key, unsigned char *IV,size_t plaintext_len, size_t key_len, size_t IV_len) {
-    gcry_cipher_hd_t handle;
-    gcry_error_t err;
-    
-
-    // Initialize Libgcrypt
-    if (!gcry_check_version(GCRYPT_VERSION)) {
-        fprintf(stderr, "Libgcrypt version mismatch\n");
-        return 1;
-    }
-    gcry_control(GCRYCTL_DISABLE_SECMEM, 0);
-    gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
-
-    // Allocate memory for ciphertext
-    unsigned char ciphertext[1038];
-    if (!ciphertext) {
-        fprintf(stderr, "Memory allocation failed\n");
-        return 1;
-    }
-
-    // Open cipher handle
-    err = gcry_cipher_open(&handle, GCRY_CIPHER_AES256, GCRY_CIPHER_MODE_CBC, 0);
-    if (err) {
-        fprintf(stderr, "Failed to open cipher handle\n");
-        return 1;
-    }
-
-    // Set key
-    err = gcry_cipher_setkey(handle, key, 16);
-    if (err) {
-        fprintf(stderr, "Failed to set key: %s\n", gcry_strerror(err));
-        return 1;
-    }
-
-    // Set IV
-    err = gcry_cipher_setiv(handle, IV, 16);
-    if (err) {
-        fprintf(stderr, "Failed to set IV: %s\n", gcry_strerror(err));
-        return 1;
-    }
-
-    // Encrypt plaintext
-    err = gcry_cipher_encrypt(handle, ciphertext, plaintext_len + 16, plaintext, plaintext_len);
-    if (err) {
-        fprintf(stderr, "Encryption failed: %s\n", gcry_strerror(err));
-        return 1;
-    }
-
-
-
-    // Clean up
-    gcry_cipher_close(handle);
-    //free(ciphertext);
-    return 0;
-}
-*/
-
 
 int aes_generic(unsigned char *plaintext, unsigned char *key, unsigned char *IV,size_t plaintext_len, size_t key_len, size_t IV_len, int mode) {
     gcry_cipher_hd_t handle;
@@ -120,7 +114,7 @@ int aes_generic(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
     gcry_control(GCRYCTL_INITIALIZATION_FINISHED, 0);
 
     // Allocate memory for ciphertext
-    unsigned char ciphertext[1600];
+    unsigned char ciphertext[plaintext_len];
     if (!ciphertext) {
         fprintf(stderr, "Memory allocation failed\n");
         return 1;
@@ -241,37 +235,6 @@ float throughput(int (*f)(unsigned char*  , unsigned char* , unsigned char* ,siz
 }
 
 
-/*
-//This measures execution runtime
-int main()
-{
-    int L = 1025;
-
-    unsigned char *plaintext = random_string_generator(L);
-    size_t plaintext_len = strlen((unsigned char* )plaintext);
-
-    unsigned char *key =random_string_generator(32);
-    unsigned char *IV = random_string_generator(16);
-    size_t key_len = 32;
-    size_t IV_len = 16;
-
-
-    float time_spent = cpu_time(aes, plaintext, key, IV, plaintext_len, key_len, IV_len)/1000000;
-    float rate = cpu_cycles(aes, plaintext, key, IV, plaintext_len, key_len, IV_len);
-    float Throughput = throughput(aes, plaintext, key, IV, plaintext_len, key_len, IV_len);
-
-
-    //printf("Runtime: %f seconds\n", time_spent);
-    printf("Speed of algorithm: %f [Clock cycles]/[Byte]\n", rate);
-    printf("Runtime: %f milliseconds\n", time_spent);
-    printf("Throughput: %f Bytes/second\n", Throughput);
-    printf("Length: %ld", plaintext_len);
-    printf("\n");
-
-    return 0;
-
-}
-*/
 int main()
 {
     int (*aes_encryption_functions[])(unsigned char*, unsigned char*, unsigned char*, size_t, size_t, size_t) = {
@@ -293,7 +256,12 @@ int main()
 
     for (size_t i = 0; i < aes_num_functions; i++) {
         int L = 1025;
-        unsigned char *plaintext = random_string_generator(L);
+        size_t padded_size;
+        unsigned char *plaintext = file_to_buffer("sample.txt", &padded_size);
+        if (!plaintext) {
+            fprintf(stderr, "Failed to load file into buffer\n");
+            continue;
+        }
         size_t plaintext_len = strlen((const char *)plaintext);
         unsigned char *key =random_string_generator(32);
         unsigned char *IV = random_string_generator(16);
@@ -301,9 +269,13 @@ int main()
         size_t IV_len = 16;
 
         init();
+
         float time_spent = (cpu_time(aes_encryption_functions[i], plaintext, key, IV, plaintext_len, key_len, IV_len))/1000;
+
         float cycles = cpu_cycles(aes_encryption_functions[i], plaintext, key, IV, plaintext_len, key_len, IV_len);
+
         float thr = throughput(aes_encryption_functions[i], plaintext, key, IV, plaintext_len, key_len, IV_len);
+  
         double cpu_usage = getCurrentValue();
 
         printf("-------------------------------------------------------\n");

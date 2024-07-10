@@ -1,0 +1,780 @@
+--------------------------------------------------------------------------------
+Command:            ./RSA
+Massif arguments:   (none)
+ms_print arguments: massif.out.24749
+--------------------------------------------------------------------------------
+
+
+    MB
+15.39^                                                   :::::::              
+     |                       @@@@@@@#                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :                    
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+     |                       @      #                    :      :             
+   0 +----------------------------------------------------------------------->Gi
+     0                                                                   8.560
+
+Number of snapshots: 71
+ Detailed snapshots: [6, 9, 18, 22, 24, 25, 26 (peak), 29, 34, 54, 64]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1     69,848,325          137,104          136,564           540            0
+  2    212,037,727          136,968          136,436           532            0
+  3    301,563,098          140,064          139,268           796            0
+  4    379,810,385          140,064          139,268           796            0
+  5    547,460,918          139,800          139,012           788            0
+  6    681,574,139          139,800          139,012           788            0
+99.44% (139,012B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->99.21% (138,690B) 0x48517F0: do_malloc (global.c:1011)
+| ->93.76% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->93.76% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->93.76% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->93.76% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->93.76% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->93.76% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->93.76% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->93.76% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->93.76% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->93.76% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->93.76% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->93.76% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->93.76% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->93.76% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->93.76% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->93.76% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->93.76% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->93.76% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->93.76% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->93.76% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->93.76% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->93.76% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.85% (5,376B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->03.85% (5,376B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.91% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.91% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.91% (2,672B) 0x489A7D6: generate_std (rsa.c:308)
+| |   |     ->01.91% (2,672B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   |       ->01.91% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |         ->01.91% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |           ->01.91% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |             ->01.91% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |               ->01.91% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |                 ->01.91% (2,672B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |                   
+| |   ->01.56% (2,176B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.09% (1,528B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.09% (1,528B) 0x48714DC: gen_prime (primegen.c:813)
+| |   | |   ->01.09% (1,528B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | |     ->01.09% (1,528B) 0x489A7D6: generate_std (rsa.c:308)
+| |   | |       ->01.09% (1,528B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   | |         ->01.09% (1,528B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | |           ->01.09% (1,528B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | |             ->01.09% (1,528B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |               ->01.09% (1,528B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |                 ->01.09% (1,528B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |                   ->01.09% (1,528B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |                     
+| |   | ->00.46% (648B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.38% (528B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.42% (1,992B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.42% (1,992B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.42% (1,992B) in 4 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.23% (322B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  7    782,170,725          139,800          139,012           788            0
+  8    938,651,795          139,800          139,012           788            0
+  9  1,039,248,867          139,800          139,012           788            0
+99.44% (139,012B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->99.21% (138,690B) 0x48517F0: do_malloc (global.c:1011)
+| ->93.76% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->93.76% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->93.76% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->93.76% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->93.76% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->93.76% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->93.76% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->93.76% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->93.76% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->93.76% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->93.76% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->93.76% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->93.76% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->93.76% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->93.76% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->93.76% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->93.76% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->93.76% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->93.76% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->93.76% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->93.76% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->93.76% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.85% (5,376B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->03.85% (5,376B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.91% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.91% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.91% (2,672B) 0x489A7D6: generate_std (rsa.c:308)
+| |   |     ->01.91% (2,672B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   |       ->01.91% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |         ->01.91% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |           ->01.91% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |             ->01.91% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |               ->01.91% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |                 ->01.91% (2,672B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |                   
+| |   ->01.56% (2,176B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.09% (1,528B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.09% (1,528B) 0x48714DC: gen_prime (primegen.c:813)
+| |   | |   ->01.09% (1,528B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | |     ->01.09% (1,528B) 0x489A7D6: generate_std (rsa.c:308)
+| |   | |       ->01.09% (1,528B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   | |         ->01.09% (1,528B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | |           ->01.09% (1,528B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | |             ->01.09% (1,528B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |               ->01.09% (1,528B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |                 ->01.09% (1,528B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |                   ->01.09% (1,528B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |                     
+| |   | ->00.46% (648B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.38% (528B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.42% (1,992B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.42% (1,992B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.42% (1,992B) in 4 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.23% (322B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 10  1,162,203,026          139,800          139,012           788            0
+ 11  1,307,518,163          139,800          139,012           788            0
+ 12  1,408,124,933          139,800          139,012           788            0
+ 13  1,542,280,284          139,800          139,012           788            0
+ 14  1,642,884,233          139,800          139,012           788            0
+ 15  1,760,663,442          141,336          140,452           884            0
+ 16  1,922,626,964          139,992          139,172           820            0
+ 17  2,034,853,801          139,992          139,172           820            0
+ 18  2,124,649,912          139,992          139,172           820            0
+99.41% (139,172B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->99.18% (138,850B) 0x48517F0: do_malloc (global.c:1011)
+| ->93.63% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->93.63% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->93.63% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->93.63% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->93.63% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->93.63% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->93.63% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->93.63% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->93.63% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->93.63% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->93.63% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->93.63% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->93.63% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->93.63% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->93.63% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->93.63% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->93.63% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->93.63% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->93.63% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->93.63% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->93.63% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->93.63% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.94% (5,512B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->03.94% (5,512B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.91% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.91% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.91% (2,672B) 0x489A7EE: generate_std (rsa.c:310)
+| |   |   | ->01.91% (2,672B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   |   |   ->01.91% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |   |     ->01.91% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |   |       ->01.91% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |         ->01.91% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           ->01.91% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |             ->01.91% (2,672B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |               
+| |   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   
+| |   ->01.55% (2,176B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.09% (1,528B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.09% (1,528B) 0x48714DC: gen_prime (primegen.c:813)
+| |   | |   ->01.09% (1,528B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | |     ->01.09% (1,528B) 0x489A7EE: generate_std (rsa.c:310)
+| |   | |     | ->01.09% (1,528B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   | |     |   ->01.09% (1,528B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | |     |     ->01.09% (1,528B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | |     |       ->01.09% (1,528B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |         ->01.09% (1,528B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |           ->01.09% (1,528B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |             ->01.09% (1,528B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |               
+| |   | |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | |     
+| |   | ->00.46% (648B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.47% (664B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.44% (2,016B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.44% (2,016B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.44% (2,016B) in 5 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.23% (322B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 19  2,259,325,092          139,992          139,172           820            0
+ 20  2,371,531,919          139,992          139,172           820            0
+ 21  2,494,963,513          139,992          139,172           820            0
+ 22  2,573,527,008          139,992          139,172           820            0
+99.41% (139,172B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->99.18% (138,850B) 0x48517F0: do_malloc (global.c:1011)
+| ->93.63% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->93.63% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->93.63% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->93.63% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->93.63% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->93.63% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->93.63% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->93.63% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->93.63% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->93.63% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->93.63% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->93.63% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->93.63% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->93.63% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->93.63% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->93.63% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->93.63% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->93.63% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->93.63% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->93.63% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->93.63% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->93.63% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.94% (5,512B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->03.94% (5,512B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.91% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.91% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.91% (2,672B) 0x489A7EE: generate_std (rsa.c:310)
+| |   |   | ->01.91% (2,672B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   |   |   ->01.91% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |   |     ->01.91% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |   |       ->01.91% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |         ->01.91% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           ->01.91% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |             ->01.91% (2,672B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |               
+| |   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   
+| |   ->01.55% (2,176B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.09% (1,528B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.09% (1,528B) 0x48714DC: gen_prime (primegen.c:813)
+| |   | |   ->01.09% (1,528B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | |     ->01.09% (1,528B) 0x489A7EE: generate_std (rsa.c:310)
+| |   | |     | ->01.09% (1,528B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   | |     |   ->01.09% (1,528B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | |     |     ->01.09% (1,528B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | |     |       ->01.09% (1,528B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |         ->01.09% (1,528B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |           ->01.09% (1,528B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |             ->01.09% (1,528B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |     |               
+| |   | |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | |     
+| |   | ->00.46% (648B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.47% (664B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.44% (2,016B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.44% (2,016B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.44% (2,016B) in 5 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.23% (322B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 23  2,663,299,941          139,992          139,172           820            0
+ 24  2,791,015,103          141,528          140,612           916            0
+99.35% (140,612B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->98.85% (139,898B) 0x48517F0: do_malloc (global.c:1011)
+| ->92.61% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->92.61% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->92.61% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->92.61% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->92.61% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->92.61% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->92.61% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->92.61% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->92.61% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->92.61% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->92.61% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->92.61% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->92.61% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->92.61% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->92.61% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->92.61% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->92.61% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->92.61% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->92.61% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->92.61% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->92.61% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->92.61% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.34% (4,728B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->03.34% (4,728B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->02.05% (2,896B) 0x48E1814: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.36% (1,920B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.36% (1,920B) 0x48710F8: is_prime (primegen.c:961)
+| |   | |   ->01.36% (1,920B) 0x4871501: gen_prime (primegen.c:817)
+| |   | |     ->01.36% (1,920B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | |       ->01.36% (1,920B) 0x489A7EE: generate_std (rsa.c:310)
+| |   | |       | ->01.36% (1,920B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   | |       |   ->01.36% (1,920B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | |       |     ->01.36% (1,920B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | |       |       ->01.36% (1,920B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |       |         ->01.36% (1,920B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |       |           ->01.36% (1,920B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |       |             ->01.36% (1,920B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | |       |               
+| |   | |       ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | |       
+| |   | ->00.69% (976B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->01.29% (1,832B) in 4 places, all below massif's threshold (1.00%)
+| |     
+| ->02.72% (3,848B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->02.72% (3,848B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.89% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.89% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.89% (2,672B) 0x489A7EE: generate_std (rsa.c:310)
+| |   |   | ->01.89% (2,672B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   |   |   ->01.89% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |   |     ->01.89% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |   |       ->01.89% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |         ->01.89% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           ->01.89% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |             ->01.89% (2,672B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |               
+| |   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   
+| |   ->00.83% (1,176B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.50% (714B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 25  2,949,536,588       16,140,432       16,133,085         7,347            0
+99.95% (16,133,085B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->49.56% (8,000,000B) 0x10966E: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| ->49.56% (8,000,000B) 0x10A0C9: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|   ->49.56% (8,000,000B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|     
+->49.56% (8,000,000B) 0x498CB6C: qsort_r (msort.c:222)
+| ->49.56% (8,000,000B) 0x1096D8: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|   ->49.56% (8,000,000B) 0x10A0C9: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|     ->49.56% (8,000,000B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|       
+->00.82% (133,085B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 26  3,858,296,733       16,140,432       16,133,085         7,347            0
+99.95% (16,133,085B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->49.56% (8,000,000B) 0x10966E: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| ->49.56% (8,000,000B) 0x10A0C9: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|   ->49.56% (8,000,000B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|     
+->49.56% (8,000,000B) 0x498CB6C: qsort_r (msort.c:222)
+| ->49.56% (8,000,000B) 0x1096D8: measure_overhead (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|   ->49.56% (8,000,000B) 0x10A0C9: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|     ->49.56% (8,000,000B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+|       
+->00.82% (133,085B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 27  4,000,326,609          141,336          140,452           884            0
+ 28  4,119,997,975          137,160          136,596           564            0
+ 29  4,275,649,015          140,600          139,628           972            0
+99.31% (139,628B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->98.52% (138,522B) 0x48517F0: do_malloc (global.c:1011)
+| ->93.22% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->93.22% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->93.22% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->93.22% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->93.22% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->93.22% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->93.22% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->93.22% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->93.22% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->93.22% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->93.22% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->93.22% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->93.22% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->93.22% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->93.22% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->93.22% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->93.22% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->93.22% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->93.22% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->93.22% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->93.22% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->93.22% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->02.60% (3,656B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->02.60% (3,656B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->02.41% (3,384B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.37% (1,920B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.37% (1,920B) 0x4898892: secret_core_crt (rsa.c:1120)
+| |   | | | ->01.37% (1,920B) 0x4898892: secret (rsa.c:1157)
+| |   | | |   ->01.37% (1,920B) 0x48994BD: test_keys (rsa.c:148)
+| |   | | |   | ->01.37% (1,920B) 0x489A60F: generate_std (rsa.c:379)
+| |   | | |   |   ->01.37% (1,920B) 0x489A60F: rsa_generate (rsa.c:1295)
+| |   | | |   |     ->01.37% (1,920B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | | |   |       ->01.37% (1,920B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | | |   |         ->01.37% (1,920B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           ->01.37% (1,920B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |             ->01.37% (1,920B) 0x10A107: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |             | ->01.37% (1,920B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |             |   
+| |   | | |   |             ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   |             
+| |   | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   
+| |   | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | 
+| |   | ->01.04% (1,464B) in 9 places, all below massif's threshold (1.00%)
+| |   |   
+| |   ->00.19% (272B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->02.52% (3,544B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->02.52% (3,544B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.30% (1,832B) in 4 places, all below massif's threshold (1.00%)
+| |   | 
+| |   ->01.22% (1,712B) 0x48E1814: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |     ->01.22% (1,712B) in 25 places, all below massif's threshold (1.00%)
+| |       
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.79% (1,106B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 30  4,402,960,626          136,968          136,436           532            0
+ 31  4,492,178,625          139,800          139,012           788            0
+ 32  4,581,296,856          139,800          139,012           788            0
+ 33  4,670,438,733          139,800          139,012           788            0
+ 34  4,804,161,483          139,800          139,012           788            0
+99.44% (139,012B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->99.21% (138,690B) 0x48517F0: do_malloc (global.c:1011)
+| ->93.76% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->93.76% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->93.76% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->93.76% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->93.76% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->93.76% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->93.76% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->93.76% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->93.76% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->93.76% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->93.76% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->93.76% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->93.76% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->93.76% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->93.76% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->93.76% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->93.76% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->93.76% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->93.76% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->93.76% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->93.76% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->93.76% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.85% (5,376B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->03.85% (5,376B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.91% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.91% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.91% (2,672B) 0x489A7D6: generate_std (rsa.c:308)
+| |   |   | ->01.91% (2,672B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   |   |   ->01.91% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |   |     ->01.91% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |   |       ->01.91% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |         ->01.91% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           ->01.91% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | ->01.91% (2,672B) 0x10A1E0: throughput (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | | ->01.91% (2,672B) 0x10A475: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | |   
+| |   |   |           | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   |           | 
+| |   |   |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   |           
+| |   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   
+| |   ->01.56% (2,176B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.09% (1,528B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.09% (1,528B) 0x48714DC: gen_prime (primegen.c:813)
+| |   | | | ->01.09% (1,528B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | | |   ->01.09% (1,528B) 0x489A7D6: generate_std (rsa.c:308)
+| |   | | |   | ->01.09% (1,528B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   | | |   |   ->01.09% (1,528B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | | |   |     ->01.09% (1,528B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | | |   |       ->01.09% (1,528B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |         ->01.09% (1,528B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           ->01.09% (1,528B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           | ->01.09% (1,528B) 0x10A1E0: throughput (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           | | ->01.09% (1,528B) 0x10A475: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           | |   
+| |   | | |   |           | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   |           | 
+| |   | | |   |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   |           
+| |   | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   
+| |   | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | 
+| |   | ->00.46% (648B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.38% (528B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.42% (1,992B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.42% (1,992B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.42% (1,992B) in 5 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.23% (322B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 35  4,893,312,373          139,800          139,012           788            0
+ 36  4,982,455,201          139,800          139,012           788            0
+ 37  5,107,891,706          141,336          140,452           884            0
+ 38  5,272,098,761          139,992          139,172           820            0
+ 39  5,405,435,877          139,992          139,172           820            0
+ 40  5,494,336,769          139,992          139,172           820            0
+ 41  5,660,860,874          140,600          139,628           972            0
+ 42  5,788,681,585          138,200          137,652           548            0
+ 43  5,922,407,214          141,032          140,228           804            0
+ 44  6,011,529,950          141,032          140,228           804            0
+ 45  6,092,342,366          142,568          141,668           900            0
+ 46  6,211,985,837          138,392          137,812           580            0
+ 47  6,373,459,792          142,760          141,828           932            0
+ 48  6,519,218,867       16,141,664       16,134,301         7,363            0
+ 49  7,428,825,314        8,138,136        8,134,301         3,835            0
+ 50  7,523,355,811          138,200          137,652           548            0
+ 51  7,601,509,538          141,032          140,228           804            0
+ 52  7,681,006,370          142,568          141,668           900            0
+ 53  7,813,207,533          138,392          137,812           580            0
+ 54  7,890,802,007          141,224          140,388           836            0
+99.41% (140,388B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->98.32% (138,850B) 0x48517F0: do_malloc (global.c:1011)
+| ->92.81% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->92.81% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->92.81% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->92.81% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->92.81% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->92.81% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->92.81% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->92.81% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->92.81% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->92.81% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->92.81% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->92.81% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->92.81% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->92.81% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->92.81% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->92.81% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->92.81% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->92.81% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->92.81% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->92.81% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->92.81% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->92.81% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->03.90% (5,512B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->03.90% (5,512B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.89% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.89% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.89% (2,672B) 0x489A7EE: generate_std (rsa.c:310)
+| |   |   | ->01.89% (2,672B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   |   |   ->01.89% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |   |     ->01.89% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |   |       ->01.89% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |         ->01.89% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           ->01.89% (2,672B) 0x10A107: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | ->01.89% (2,672B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           |   
+| |   |   |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   |           
+| |   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   
+| |   ->01.54% (2,176B) 0x48E1801: _gcry_mpi_alloc_limb_space (mpiutil.c:131)
+| |   | ->01.08% (1,528B) 0x48DD704: _gcry_mpi_powm (mpi-pow.c:575)
+| |   | | ->01.08% (1,528B) 0x48714DC: gen_prime (primegen.c:813)
+| |   | | | ->01.08% (1,528B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   | | |   ->01.08% (1,528B) 0x489A7EE: generate_std (rsa.c:310)
+| |   | | |   | ->01.08% (1,528B) 0x489A7EE: rsa_generate (rsa.c:1295)
+| |   | | |   |   ->01.08% (1,528B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   | | |   |     ->01.08% (1,528B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   | | |   |       ->01.08% (1,528B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |         ->01.08% (1,528B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           ->01.08% (1,528B) 0x10A107: cpu_cycles (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           | ->01.08% (1,528B) 0x10A454: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   | | |   |           |   
+| |   | | |   |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   |           
+| |   | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | |   
+| |   | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | | 
+| |   | ->00.46% (648B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.47% (664B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.43% (2,016B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.43% (2,016B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.43% (2,016B) in 5 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.09% (1,538B) in 12 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 55  7,968,339,926          141,224          140,388           836            0
+ 56  8,045,870,556          141,224          140,388           836            0
+ 57  8,123,417,811          141,224          140,388           836            0
+ 58  8,200,954,975          141,224          140,388           836            0
+ 59  8,278,516,595          141,224          140,388           836            0
+ 60  8,356,029,284          141,224          140,388           836            0
+ 61  8,433,575,004          141,224          140,388           836            0
+ 62  8,504,428,556          142,760          141,828           932            0
+ 63  8,577,656,075          141,816          140,844           972            0
+ 64  8,705,093,534          138,200          137,652           548            0
+99.60% (137,652B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->98.49% (136,114B) 0x48517F0: do_malloc (global.c:1011)
+| ->94.84% (131,072B) 0x4852E36: _gcry_malloc (global.c:1033)
+| | ->94.84% (131,072B) 0x4852E36: _gcry_calloc (global.c:1132)
+| |   ->94.84% (131,072B) 0x48D649A: jent_entropy_collector_alloc_internal (jitterentropy-base.c:410)
+| |     ->94.84% (131,072B) 0x48D65D6: _jent_entropy_collector_alloc (jitterentropy-base.c:480)
+| |     | ->94.84% (131,072B) 0x48D6649: jent_entropy_collector_alloc (jitterentropy-base.c:501)
+| |     |   ->94.84% (131,072B) 0x48D91DF: _gcry_rndjent_poll (rndjent.c:299)
+| |     |     ->94.84% (131,072B) 0x48D9785: _gcry_rndgetentropy_gather_random (rndgetentropy.c:61)
+| |     |       ->94.84% (131,072B) 0x48D17DF: read_random_source (random-csprng.c:1316)
+| |     |         ->94.84% (131,072B) 0x48D2615: read_pool (random-csprng.c:1008)
+| |     |           ->94.84% (131,072B) 0x48D2615: _gcry_rngcsprng_randomize (random-csprng.c:484)
+| |     |             ->94.84% (131,072B) 0x48D1463: _gcry_random_bytes_secure (random.c:383)
+| |     |               ->94.84% (131,072B) 0x48E24B4: _gcry_mpi_randomize (mpiutil.c:708)
+| |     |                 ->94.84% (131,072B) 0x48713F5: gen_prime (primegen.c:778)
+| |     |                   ->94.84% (131,072B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |     |                     ->94.84% (131,072B) 0x489A7D6: generate_std (rsa.c:308)
+| |     |                       ->94.84% (131,072B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |     |                         ->94.84% (131,072B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |     |                           ->94.84% (131,072B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |     |                             ->94.84% (131,072B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                               ->94.84% (131,072B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                 ->94.84% (131,072B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                   ->94.84% (131,072B) 0x10A420: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |     |                                     
+| |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |     
+| ->02.03% (2,800B) 0x48530ED: _gcry_malloc_secure_core (global.c:1043)
+| | ->02.03% (2,800B) 0x48530ED: _gcry_xmalloc_secure (global.c:1228)
+| |   ->01.93% (2,672B) 0x48715B5: gen_prime (primegen.c:763)
+| |   | ->01.93% (2,672B) 0x48730C6: _gcry_generate_secret_prime (primegen.c:256)
+| |   |   ->01.93% (2,672B) 0x489A7D6: generate_std (rsa.c:308)
+| |   |   | ->01.93% (2,672B) 0x489A7D6: rsa_generate (rsa.c:1295)
+| |   |   |   ->01.93% (2,672B) 0x4865C26: _gcry_pk_genkey (pubkey.c:818)
+| |   |   |     ->01.93% (2,672B) 0x484F044: gcry_pk_genkey (visibility.c:1100)
+| |   |   |       ->01.93% (2,672B) 0x109A82: generate_rsa_keys (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |         ->01.93% (2,672B) 0x109EC3: rsa2048 (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           ->01.93% (2,672B) 0x109FC7: cpu_time (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | ->01.93% (2,672B) 0x10A1E0: throughput (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | | ->01.93% (2,672B) 0x10A475: main (in /home/jasmine/encryption/libg-lite/encryption_codes/RSA)
+| |   |   |           | |   
+| |   |   |           | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   |           | 
+| |   |   |           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   |           
+| |   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   |   
+| |   ->00.09% (128B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->01.44% (1,992B) 0x4852FA7: _gcry_malloc (global.c:1033)
+| | ->01.44% (1,992B) 0x4852FA7: _gcry_xmalloc (global.c:1193)
+| |   ->01.44% (1,992B) in 5 places, all below massif's threshold (1.00%)
+| |     
+| ->00.18% (250B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.11% (1,538B) in 12 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 65  8,783,193,648          141,032          140,228           804            0
+ 66  8,861,185,286          141,032          140,228           804            0
+ 67  8,932,527,673          142,568          141,668           900            0
+ 68  9,039,563,995          138,392          137,812           580            0
+ 69  9,120,665,629          142,760          141,828           932            0
+ 70  9,190,990,737          141,816          140,844           972            0

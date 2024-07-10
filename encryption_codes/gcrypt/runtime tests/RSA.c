@@ -1,5 +1,5 @@
 #define _POSIX_C_SOURCE 200809L
-#include "../install/include/gcrypt.h"
+#include "../../install/include/gcrypt.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -137,9 +137,6 @@ int rsa2048(unsigned char* plaintext, int mode) {
     // Generate RSA keys
     gcry_sexp_t pub_key = NULL, priv_key = NULL;
     generate_rsa_keys(&pub_key, &priv_key);
-    // Print the public and private keys (for verification)
-    //print_sexp("Public key", pub_key);
-    //print_sexp("Private key", priv_key);
     // The plaintext to be encrypted
     size_t plaintext_len = strlen(plaintext);
 

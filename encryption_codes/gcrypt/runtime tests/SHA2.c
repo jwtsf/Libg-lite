@@ -1,15 +1,13 @@
 #define _POSIX_C_SOURCE 200809L
-#include "../install/include/gcrypt.h"
+#include "../../install/include/gcrypt.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdint.h>
 #include <time.h>
 #include "cycle-timings.h"
 #include "cpu-usage.h"
 #include <sys/random.h>
-#include <string.h>
 
 int msg_hashing(unsigned char* plaintext) {
 

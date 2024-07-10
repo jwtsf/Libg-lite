@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "sysinfo.h": "c",
+        "cpu-usage.h": "c",
+        "random.h": "c",
+        "cycle-timings.h": "c",
+        "time.h": "c",
+        "stdint.h": "c",
+        "stdio.h": "c",
+        "SHA.C": "cpp",
+        "resource.h": "c",
+        "string.h": "c",
+        "obj_mac.h": "c"
+    }
+}
