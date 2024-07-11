@@ -6,7 +6,7 @@
 #include <time.h>
 
 int main() {
-    const char *curve_name = "nistp256";  // Example curve name, replace with your desired curve
+    unsigned char *curve_name = "nistp256";  // Example curve name, replace with your desired curve
 
     // Test ECDH secret generation
     int result = ecdh_secret_generation(curve_name);

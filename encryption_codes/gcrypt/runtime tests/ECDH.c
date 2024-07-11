@@ -1,80 +1,84 @@
+#define _POSIX_C_SOURCE 200809L
+#include "cpu-usage.h"
+#include "compiled.h"
+#include "cycle-timings.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
-#include <openssl/ec.h>
-#include <openssl/ecdh.h>
-#include <openssl/evp.h>
-#include <openssl/rand.h>
+#include <sys/sysinfo.h>
+#include <time.h>
+struct timespec start, end;
+//#define ECC_CURVE_NAME "prime256v1" // Use "prime256v1" for NIST P-256 curve
+float cpu_time(int (*f)(unsigned char* ), unsigned char *curvename)
+{
+    
+    clock_gettime(CLOCK_MONOTONIC_RAW, &start);
 
-#define ECC_CURVE_NAME "prime256v1" // Use "prime256v1" for NIST P-256 curve
+    int x = (*f)(curvename);
 
-void handle_openssl_error() {
-    ERR_print_errors_fp(stderr);
-    exit(1);
+    clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+
+    const uint64_t ns = (end.tv_sec * 1000000000 + end.tv_nsec) - (start.tv_sec * 1000000000 + start.tv_nsec);
+    float time_spent = ns;
+
+    return time_spent;
+}
+//This measures CPU cycles for encryption process
+float cpu_cycles(int (*f)(unsigned char* ), unsigned char *curvename)
+{
+
+    //Measure the overhead of timing
+
+    uint64_t timing_overhead;
+    timing_overhead = measure_overhead();
+    printf("Timing overhead: %lu clock cycles\n", timing_overhead);
+
+
+    //Compute the length of processed data 
+
+    int byte_length_of_processed_data = 32;
+    float rate;
+
+    uint64_t *cycles = (uint64_t *)malloc(NUM_TIMINGS * sizeof(uint64_t));
+    uint64_t temp;
+    for (uint64_t i = 0; i < NUM_TIMINGS; i++){
+        temp = start_timer();
+
+        int x = (*f)(curvename);
+
+        temp = end_timer() - temp;
+        cycles[i] = temp;
+    }    
+    qsort(cycles, NUM_TIMINGS, sizeof(uint64_t), compare_u64);
+    rate = (float)(cycles[NUM_TIMINGS / 2] - timing_overhead) / byte_length_of_processed_data;
+    free(cycles);
+    return rate;   
 }
 
-void generate_ecdh_keypair(EC_KEY **pub_key, EC_KEY **priv_key) {
-    EC_KEY *ecdh_key = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
-    if (!ecdh_key)
-        handle_openssl_error();
-
-    if (!EC_KEY_generate_key(ecdh_key))
-        handle_openssl_error();
-
-    *priv_key = ecdh_key;
-    *pub_key = EC_KEY_new();
-    if (!*pub_key || !EC_KEY_copy(*pub_key, ecdh_key))
-        handle_openssl_error();
-
-    EC_KEY_set_asn1_flag(*pub_key, OPENSSL_EC_NAMED_CURVE);
-}
-
-void compute_ecdh_shared_secret(const EC_KEY *pub_key, const EC_KEY *priv_key, unsigned char *shared_secret, size_t *shared_secret_len) {
-    EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new(pub_key, NULL);
-    if (!ctx)
-        handle_openssl_error();
-
-    if (EVP_PKEY_derive_init(ctx) <= 0 ||
-        EVP_PKEY_derive_set_peer(ctx, EC_KEY_get0_public_key(pub_key)) <= 0 ||
-        EVP_PKEY_derive(ctx, NULL, shared_secret_len) <= 0 ||
-        EVP_PKEY_derive(ctx, shared_secret, shared_secret_len) <= 0)
-    {
-        EVP_PKEY_CTX_free(ctx);
-        handle_openssl_error();
-    }
-
-    EVP_PKEY_CTX_free(ctx);
+//This measures throughput
+float throughput(int (*f)(unsigned char* ), unsigned char *curvename)
+{
+    int byte_length_of_processed_data = 32;
+    float time = cpu_time(f, curvename);
+    float throughput = byte_length_of_processed_data/time;
+    return throughput;
 }
 
 int main() {
-    EC_KEY *alice_pub_key = NULL, *alice_priv_key = NULL;
-    EC_KEY *bob_pub_key = NULL, *bob_priv_key = NULL;
-
-    // Generate key pairs for Alice and Bob
-    generate_ecdh_keypair(&alice_pub_key, &alice_priv_key);
-    generate_ecdh_keypair(&bob_pub_key, &bob_priv_key);
-
-    // Compute shared secret for Alice
-    size_t shared_secret_len = EVP_PKEY_size(EVP_PKEY_new());
-    unsigned char *alice_shared_secret = malloc(shared_secret_len);
-    if (!alice_shared_secret)
-        handle_openssl_error();
-
-    compute_ecdh_shared_secret(bob_pub_key, alice_priv_key, alice_shared_secret, &shared_secret_len);
-
-    // Print or use alice_shared_secret as needed (e.g., as symmetric keys for encryption)
-    printf("Alice's shared secret (hexadecimal):\n");
-    for (size_t i = 0; i < shared_secret_len; ++i) {
-        printf("%02X", alice_shared_secret[i]);
-    }
+    unsigned char *curve_name = "nistp256";  // Example curve name, replace with your desired curve
+    //int result = ecdh_secret_generation(curve_name, NULL, NULL, 0, 0, 0, 0, NULL);
+    init();
+    float time_spent = (cpu_time(ecdh_secret_generation, curve_name))/1000000;
+    float cycles = cpu_cycles(ecdh_secret_generation, curve_name);
+    float thr = throughput(ecdh_secret_generation, curve_name);
+    double cpu_usage = getCurrentValue();
+    printf("-------------------------------------------------------\n");
+    printf("ECDH Secret Generation\n");
+    printf("Speed of algorithm: %f [Clock cycles]/[Byte]\n", cycles);
+    printf("Runtime: %f milliseconds\n", time_spent);
+    printf("Throughput: %f Bytes/second\n", thr);
+    printf("CPU Usage: %.2f%% \n", cpu_usage);
+    printf("Processed Bytes: %d bytes\n", 32);
     printf("\n");
-
-    // Clean up
-    EC_KEY_free(alice_pub_key);
-    EC_KEY_free(alice_priv_key);
-    EC_KEY_free(bob_pub_key);
-    EC_KEY_free(bob_priv_key);
-    free(alice_shared_secret);
-
     return 0;
 }

@@ -263,7 +263,7 @@ int aes_ofb_decrypt(unsigned char *plaintext, unsigned char *key, unsigned char 
 }
 
 int aes_ctr_decrypt(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
-                 size_t plaintext_len, size_t key_len, size_t IV_len, int cipher, const unsigned char *ciphertext, unsigned char* decrypted) {
+                 size_t plaintext_len, size_t key_len, size_t IV_len, const unsigned char *ciphertext, int cipher, unsigned char* decrypted) {
     gcry_cipher_hd_t handle;
     gcry_error_t err;
 
@@ -367,6 +367,16 @@ void rsa_encrypt_generic(gcry_sexp_t pub_key, unsigned char *plaintext, size_t p
     gcry_sexp_release(enc_data);
     gcry_sexp_release(value);
     gcry_mpi_release(enc_mpi);
+}
+
+void rsa_oaep_encrypt(gcry_sexp_t pub_key, unsigned char *plaintext, 
+                    size_t plaintext_len, unsigned char **ciphertext, size_t *ciphertext_len) {
+    return rsa_encrypt_generic(pub_key, plaintext, plaintext_len, ciphertext, ciphertext_len, "oaep");
+}
+
+void rsa_pkcs1_encrypt(gcry_sexp_t pub_key, unsigned char *plaintext, 
+                    size_t plaintext_len, unsigned char **ciphertext, size_t *ciphertext_len) {
+    return rsa_encrypt_generic(pub_key, plaintext, plaintext_len, ciphertext, ciphertext_len, "pkcs1");
 }
 
 //========================================//
