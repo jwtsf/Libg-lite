@@ -180,6 +180,11 @@ int aes_ofb_encrypt(unsigned char *plaintext, unsigned char *key, unsigned char 
     return aes_generic_encrypt(plaintext, key, IV, plaintext_len, key_len, IV_len, GCRY_CIPHER_MODE_OFB, cipher, ciphertext);
 }
 
+int aes_gcm_encrypt(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
+                size_t plaintext_len, size_t key_len, size_t IV_len, int cipher, unsigned char *ciphertext) {
+    return aes_generic_encrypt(plaintext, key, IV, plaintext_len, key_len, IV_len, GCRY_CIPHER_MODE_GCM, cipher, ciphertext);
+}
+
 
 int aes_ctr_encrypt(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
                  size_t plaintext_len, size_t key_len, size_t IV_len,  int cipher, unsigned char *ciphertext)
@@ -260,6 +265,11 @@ int aes_cfb_decrypt(unsigned char *plaintext, unsigned char *key, unsigned char 
 int aes_ofb_decrypt(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
                 size_t plaintext_len, size_t key_len, size_t IV_len, int cipher, unsigned char *ciphertext, unsigned char *decrypted) {
     return aes_generic_decrypt(plaintext, key, IV, plaintext_len, key_len, IV_len, cipher, GCRY_CIPHER_MODE_OFB, ciphertext, decrypted);
+}
+
+int aes_gcm_decrypt(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
+                size_t plaintext_len, size_t key_len, size_t IV_len, int cipher, unsigned char *ciphertext, unsigned char *decrypted) {
+    return aes_generic_decrypt(plaintext, key, IV, plaintext_len, key_len, IV_len, cipher, GCRY_CIPHER_MODE_GCM, ciphertext, decrypted);
 }
 
 int aes_ctr_decrypt(unsigned char *plaintext, unsigned char *key, unsigned char *IV,
@@ -725,6 +735,46 @@ void sm4_decrypt(unsigned char *iv, unsigned char *key, size_t padded_len, size_
     handle_error(err);
 
     
+}
+
+//========================================//
+//-- MAC ---------------------------------//
+//========================================//
+
+// Compute HMAC using SHA-256
+void compute_hmac(const unsigned char *key, size_t key_len, const unsigned char *data, size_t data_len, unsigned char *hmac, int hash_function) {
+    gcry_md_hd_t handle;
+    gcry_md_open(&handle, hash_function, GCRY_MD_FLAG_HMAC);
+    gcry_md_setkey(handle, key, key_len);
+    gcry_md_write(handle, data, data_len);
+    memcpy(hmac, gcry_md_read(handle, hash_function), gcry_md_get_algo_dlen(hash_function));
+    gcry_md_close(handle);
+}
+
+void compute_cmac(const unsigned char *key, size_t key_len, const unsigned char *data, size_t data_len, unsigned char *cmac, int cipher) {
+    gcry_mac_hd_t handle;
+    gcry_mac_open(&handle, cipher, 0, NULL);
+    gcry_mac_setkey(handle, key, key_len);
+    gcry_mac_write(handle, data, data_len);
+    gcry_mac_read(handle, cmac, NULL);
+    gcry_mac_close(handle);
+}
+
+void compute_gmac(const unsigned char *key, const unsigned char *data, size_t key_len, size_t data_len, unsigned char *gmac, unsigned char* gmac_iv, int cipher) {
+    gcry_cipher_hd_t handle;
+    gcry_cipher_open(&handle, cipher, GCRY_CIPHER_MODE_GCM, 0);
+    gcry_cipher_setkey(handle, key, key_len);
+
+
+    gcry_randomize(gmac_iv, sizeof(gmac_iv), GCRY_STRONG_RANDOM);
+    gcry_cipher_setiv(handle, gmac_iv, sizeof(gmac_iv));
+
+    // Perform encryption without actually producing ciphertext (plaintext=NULL, ciphertext=NULL)
+    gcry_cipher_encrypt(handle, NULL, 0, data, data_len);
+
+    // Read the GMAC (authentication tag)
+    gcry_cipher_gettag(handle, gmac, 16);
+    gcry_cipher_close(handle);
 }
 
 #endif

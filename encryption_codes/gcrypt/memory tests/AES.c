@@ -1,4 +1,3 @@
-//#include "../../../install/include/gcrypt.h"
 #include "compiled.h"
 #include <stdio.h>
 #include <stdint.h>
@@ -8,6 +7,7 @@
 
 #define AES_KEY_LENGTH 32
 #define BLOCK_SIZE 16 // 128 bits
+
 
 void print_hex(unsigned char *data, size_t len) {
     for (size_t i = 0; i < len; i++) {
@@ -62,7 +62,7 @@ int main() {
     size_t padded_len = (plaintext_len / BLOCK_SIZE + 1) * BLOCK_SIZE;
     unsigned char *ciphertext = (unsigned char *)malloc(padded_len);
     unsigned char *decrypted = (unsigned char *)malloc(padded_len);   
-
+    
 
     // Test AES-256-CTR
     printf("Testing AES-256-CTR...\n");
@@ -73,7 +73,7 @@ int main() {
     }
 
     printf("Decrypting AES-256-CTR...\n");
-    aes_ctr_decrypt(ciphertext, key, iv, plaintext_len, sizeof(key), sizeof(iv), ciphertext, GCRY_CIPHER_AES256, decrypted);
+    aes_ctr_decrypt(ciphertext, key, iv, plaintext_len, sizeof(key), sizeof(iv), GCRY_CIPHER_AES256, ciphertext, decrypted);
 
 
 
@@ -114,6 +114,15 @@ int main() {
     }
     printf("Decrypting AES-256-OFB...\n");
     aes_ofb_decrypt(ciphertext, key, iv, plaintext_len, sizeof(key), sizeof(iv), GCRY_CIPHER_AES256, ciphertext, decrypted);
+
+    printf("Testing AES-256-GCM...\n");
+    if (aes_gcm_encrypt(plaintext, key, iv, plaintext_len, sizeof(key), sizeof(iv), GCRY_CIPHER_AES256, ciphertext) == 0) {
+        printf("AES-256-GCM encryption successful.\n");
+    } else {
+        printf("AES-256-GCM encryption failed.\n");
+    }
+    printf("Decrypting AES-256-GCM...\n");
+    aes_gcm_decrypt(ciphertext, key, iv, plaintext_len, sizeof(key), sizeof(iv), GCRY_CIPHER_AES256, ciphertext, decrypted);
 
     return 0;
 }
